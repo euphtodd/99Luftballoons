@@ -20,21 +20,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
-        for var x = 1; x < 100; x++ {
-            //create 99 instances of struct balloon, then populate the array myBalloons
-            var balloon = Balloon()
-            balloon.number = x
-            
-            //sets balloon images randomly (supposed to use a switch, but this works too)
-            var randomNumber = 0
-            randomNumber = Int(arc4random_uniform(UInt32(self.balloonImages.count)))
-            balloon.image = UIImage(named: self.balloonImages[randomNumber])
-            
-            //append each balloon instance to the array myBalloons
-            self.myBalloons += [balloon]
-        }
-        
+        createBalloons()
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,6 +57,22 @@ class ViewController: UIViewController {
             }, completion: {
                 (finished: Bool) -> () in
         })
+    }
+    
+    func createBalloons () {
+        for var x = 1; x < 100; x++ {
+            //create 99 instances of struct balloon, then populate the array myBalloons
+            var balloon = Balloon()
+            balloon.number = x
+            
+            //sets balloon images randomly (supposed to use a switch, but this works too)
+            var randomNumber = 0
+            randomNumber = Int(arc4random_uniform(UInt32(self.balloonImages.count)))
+            balloon.image = UIImage(named: self.balloonImages[randomNumber])
+            
+            //append each balloon instance to the array myBalloons
+            self.myBalloons += [balloon]
+        }
     }
 
 }
